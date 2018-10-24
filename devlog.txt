@@ -1,0 +1,46 @@
+1715 24-10-2018 NZST
+
+command form was given as backticks with commands separated on lines
+
+suggests the commands are essentiall string format.
+
+Would make sense to separate the concerns of command parsing and execution
+
+Specifies only that the application should read commands not that the robot should, so should be ok to have the
+robot command set strictly defined by say type systems / enums (assuming ruby has these, been a while) - actually even
+could have these be methods.
+Probably make them methods.
+extensibility point, make the table a parameter to the place method.
+
+then can have adapters to parse commands from different sources (e.g. console, file, rest API, string)
+
+for sake of this exercise probably only use one of them
+
+_______________
+
+1730 24-10-2018 NZST
+
+looking up interfaces in ruby - seems to not have them but not needed due to duck typing, can either have a class thar wraps something
+or extend a class that raises notimplemented when any method called.
+
+Are these even necessary at all?
+
+_________________
+
+2140 24-10-2018 NZST
+
+Apparently vectors can be used in hashes by value, this could be useful for representing directions
+
+should orientation be specified as an enumerable or a vector?
+
+2205 24-10-2018 NZST
+
+Wait ruby doesnt seem to have enums - in which case is a symbol or a constant better? need to find out more about symbols
+
+is a symbol keyed hash roughly equivalent to enum?
+
+_____________________
+
+2255 24-10-2018 NZST
+
+should direction symbols to vectors and turns from directions be in the same module or 2 separate modules
