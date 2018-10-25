@@ -2,9 +2,17 @@ require "matrix"
 
 # module providing mapping of compass directions to vectors, 
 # and which compass directions are left and right of each other
-module Directions
+module CompassPoints
 
-  COMPASS_POINTS = {
+
+  NAMES = {
+    :north => "NORTH",
+    :east => "EAST",
+    :south => "SOUTH",
+    :west => "WEST"
+  }
+
+  MOVE_VECTORS = {
     :north => Vector[0,1],
     :east => Vector[1,0],
     :south => Vector[0,-1],

@@ -44,3 +44,15 @@ _____________________
 2255 24-10-2018 NZST
 
 should direction symbols to vectors and turns from directions be in the same module or 2 separate modules
+
+________________________
+
+20:52 25-10-2018 New Zealand Standard Time (07:52 25-10-2018 Utc)
+
+Thought - are hashes declared in modules immutable or is there a way to make them so?
+
+if not may have to restructure the CompassPoints module - do not want it to be possible for someone to accidentally define north as
+east later
+
+Also - should there be nil checks when it shouldn't be possible for the variable to be nil? opting for the safe approach, but in theory
+it shouldn't be possible for any of table, position or orientation to be nil unless they all are nil
