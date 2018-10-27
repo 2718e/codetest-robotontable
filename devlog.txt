@@ -64,8 +64,8 @@ ___________________________
 
 16:54 27-10-2018 New Zealand Standard Time (03:54 27-10-2018 Utc)
 
-autoformatter converts comma separated arrays of strings / symbols to the fancy %w, %i syntax - is this actually more readable?
-But again inclined to just trust the autoformatter by necessity
+autoformatter converts comma separated arrays of strings / symbols to the fancy %w, %i syntax - is this actually more readable though?
+But again inclined to just trust the autoformatter because of the necessity of having one
 
 ___________________________
 
@@ -81,3 +81,20 @@ Maybe check for consistency (east is opposite of west, four turns in the same di
 maybe will make these tests if time permits.
 
 however also need to implement a parser
+
+__________________________________
+
+18:33 27-10-2018 New Zealand Standard Time (05:33 27-10-2018 Utc)
+
+Should command parser be a class or a module? does it need anything besides functions. Maybe lets just start implementing and seem
+
+In actual fact probably want to abstract out how the commands are given.
+
+How about returning a stream of commands - if want to respond to console input should be able to respond in an event driven way - similarly
+if want to expose the API over a web interface...
+
+__________________________________
+
+22:30 27-10-2018 New Zealand Standard Time (09:30 27-10-2018 Utc)
+
+quick google suggests observable/observer is the equivalent of events in ruby

@@ -1,6 +1,9 @@
 require_relative('compasspoints')
 
+# Class representing a robot that we are simulating
 class Robot
+
+  # initializes the robot, setting @position, @orientation and @table to nil
   def initialize
     @position = nil
     @orientation = nil
@@ -60,5 +63,5 @@ class Robot
   def get_orientation()
     @orientation
   end
-  
+
 end
