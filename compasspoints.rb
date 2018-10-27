@@ -28,4 +28,9 @@ module CompassPoints
 
   RIGHT_TURNS = LEFT_TURNS.invert
 
+  NAMES.freeze
+  MOVE_VECTORS.freeze
+  LEFT_TURNS.freeze
+  RIGHT_TURNS.freeze
+
 end

@@ -56,3 +56,28 @@ east later
 
 Also - should there be nil checks when it shouldn't be possible for the variable to be nil? opting for the safe approach, but in theory
 it shouldn't be possible for any of table, position or orientation to be nil unless they all are nil
+
+autoformatter (rubocop?) replaced a block definition { |robot| robot.move_forward() } with a parameter &:move_forward - wondering if
+this is really better, technically simpler but feels less readable - will put up with it for now because do need some sort of autoformatter / linter
+
+___________________________
+
+16:54 27-10-2018 New Zealand Standard Time (03:54 27-10-2018 Utc)
+
+autoformatter converts comma separated arrays of strings / symbols to the fancy %w, %i syntax - is this actually more readable?
+But again inclined to just trust the autoformatter by necessity
+
+___________________________
+
+17:08 27-10-2018 New Zealand Standard Time (04:08 27-10-2018 Utc)
+
+wondering how much should test that the cardinal directons are defined as expected. 
+
+as in does LEFT_TURNS[:north] equal :east, etc - but then the module itself only exists to define this and seems to be
+a case of duplication.
+
+Maybe check for consistency (east is opposite of west, four turns in the same direction retur to start, 2 to opposite, LEFT_TURNS[RIGHT_TURNS[anything]] = the same thing)
+
+maybe will make these tests if time permits.
+
+however also need to implement a parser

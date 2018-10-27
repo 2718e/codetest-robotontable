@@ -1,5 +1,7 @@
 require_relative '../robot'
+require_relative '../compasspoints'
 require 'matrix'
+
 
 class MockTable
   def initialize(size)
@@ -36,6 +38,19 @@ end
 
 def test_move(test_description, initial_position, orientation, table, expected_final_position)
   test_command_sequence(test_description, initial_position, orientation, table, expected_final_position, orientation, &:move_forward)
+end
+
+def test_turns(turnType, methodName, turnResultsHash, &block)
+  context "checking #{methodName} method" do
+    [:north, :east, :south, :west].each {|bearing| 
+      name = CompassPoints::NAMES[bearing]
+      result = turnResultsHash[bearing]
+      resultName = CompassPoints::NAMES[result]
+      test_command_sequence(
+        "should be facing #{result} after performing a #{turnType} turn when facing #{name}, leaving position unchanged",
+        Vector[2,2], bearing, MOCK_TABLE_5BY5,Vector[2,2], result, &block)
+    }
+  end
 end
 
 describe Robot do
@@ -77,5 +92,12 @@ describe Robot do
 
     test_move('should decrement the x position when moving forward while facing west, leaving orientation unchanged',
               Vector[2, 2], :west, MOCK_TABLE_5BY5, Vector[1, 2])
+
+    test_move('should ignore a move forward instruction if it would move off the table',
+              Vector[2, 2], :east, MOCK_TABLE_3BY3, Vector[2, 2])
   end
+
+  test_turns("left", "turn_left", CompassPoints::LEFT_TURNS, &:turn_left)
+  test_turns("right", "turn_right", CompassPoints::RIGHT_TURNS, &:turn_right)
+
 end

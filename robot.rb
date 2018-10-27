@@ -1,4 +1,4 @@
-Directions = require_relative('compasspoints')
+require_relative('compasspoints')
 
 class Robot
   def initialize
@@ -44,7 +44,7 @@ class Robot
   # does nothing if this would result in moving the robot off the table
   def move_forward()
     unless @table.nil? || @position.nil? || @orientation.nil?  
-      nextPosition = @position+Directions::Directions[@orientation]
+      nextPosition = @position+CompassPoints::MOVE_VECTORS[@orientation]
       if @table.has_coordinate(nextPosition)
         @position = nextPosition
       end
