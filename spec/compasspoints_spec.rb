@@ -1,7 +1,7 @@
 require_relative '../compasspoints'
 require 'matrix'
 
-EXPECTED_HASHES = %w[MOVE_VECTORS NAMES DIRECTIONS_BY_NAME LEFT_TURNS RIGHT_TURNS]
+EXPECTED_HASHES = %w[MOVE_VECTORS NAMES LEFT_TURNS RIGHT_TURNS]
 EXPECTED_DIRECTIONS = %i[north east south west]
 
 def test_hash(hash_name)

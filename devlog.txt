@@ -98,3 +98,12 @@ __________________________________
 22:30 27-10-2018 New Zealand Standard Time (09:30 27-10-2018 Utc)
 
 quick google suggests observable/observer is the equivalent of events in ruby
+
+__________________________________
+
+14:24 28-10-2018 New Zealand Standard Time (01:24 28-10-2018 Utc)
+
+Wasn't in the test spec to do this, but since parameterizing the table, should there also be a way
+to report which table the robot is on? 
+
+For moment just note this on readme

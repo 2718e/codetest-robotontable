@@ -1,20 +1,7 @@
 require_relative '../robot'
 require_relative '../compasspoints'
+require_relative 'mocks'
 require 'matrix'
-
-
-class MockTable
-  def initialize(size)
-    @size = size
-  end
-
-  def has_coordinate(position)
-    position.all? { |coordinate| coordinate >= 0 && coordinate < @size }
-  end
-end
-
-MOCK_TABLE_5BY5 = MockTable.new 5
-MOCK_TABLE_3BY3 = MockTable.new 3
 
 def initialize_robot(position, orientation, table)
   robot = Robot.new

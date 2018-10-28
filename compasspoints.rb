@@ -12,9 +12,6 @@ module CompassPoints
     :west => "WEST"
   }
 
-  # Allow the symbols for the directions to be looked up by the string representation
-  DIRECTIONS_BY_NAME = NAMES.invert
-
   # Mapping of the cardinal directions to x,y movement vectors
   MOVE_VECTORS = {
     :north => Vector[0,1],
@@ -35,7 +32,6 @@ module CompassPoints
   RIGHT_TURNS = LEFT_TURNS.invert
 
   NAMES.freeze
-  DIRECTIONS_BY_NAME.freeze
   MOVE_VECTORS.freeze
   LEFT_TURNS.freeze
   RIGHT_TURNS.freeze
