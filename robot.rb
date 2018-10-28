@@ -29,7 +29,7 @@ class Robot
 
   # Changes the orientation of the robot to 90 degrees left of it's current orientation
   def turn_left
-    @orientation = CompassPoints::LEFT_TURNS[@orientation] if placed? # theoretically @orientation should always be non nil once the robot is placed on the table, but checking anyway
+    @orientation = CompassPoints::LEFT_TURNS[@orientation] if placed?
   end
 
   # Changes the orientation of the robot to 90 degrees right of it's current orientation
@@ -51,13 +51,5 @@ class Robot
     !(@table.nil? || @position.nil? || @orientation.nil?)
   end
 
-  # accessor - returns the coordinates of the robot
-  def get_position
-    @position
-  end
-
-  # accessor - returns the orientation of the robot
-  def get_orientation
-    @orientation
-  end
+  attr_reader :position, :orientation
 end

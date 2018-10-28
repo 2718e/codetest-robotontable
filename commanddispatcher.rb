@@ -4,7 +4,7 @@ require "observer"
 #
 # dispatches most commands to the robot.
 # 
-# when a :report command is recieved, instead notifies observers of the reported position and orientaion
+# when a :report command is received, instead notifies observers of the reported position and orientaion
 class CommandDispatcher
   include Observable
 
@@ -12,9 +12,26 @@ class CommandDispatcher
     @robot = robot
   end
 
-  # recieves updates from observables - basically just calls process_command
+  # receives updates from observables - basically just calls process_command
   def update(command, args = nil)
     process_command(command, args)
+  end
+
+  # special method for handling the place command
+  # @param args: a list of the arguments to place method of Robot (position, orientation, table)
+  def handle_place_command(args)
+    if args.length != 3
+      raise 'Invalid number of arguments to :place command'
+    end
+
+    @robot.place(args[0], args[1], args[2])
+  end
+
+  def handle_report_command
+    if @robot.placed?
+      changed
+      notify_observers(@robot.position, @robot.orientation)
+    end
   end
 
   # executes command depending on what type we received
@@ -25,10 +42,7 @@ class CommandDispatcher
   def process_command(command, args = nil)
     case command
     when :place
-      if args.length != 3
-        raise "Invalid number of arguments to :place command"
-      end
-      @robot.place(args[0],args[1],args[2])
+      handle_place_command(args)
     when :move
       @robot.move_forward
     when :left
@@ -36,12 +50,9 @@ class CommandDispatcher
     when :right
       @robot.turn_right
     when :report
-      if @robot.placed?
-        changed
-        notify_observers(@robot.get_position, @robot.get_orientation)
-      end
+      handle_report_command
     else
-      raise "Invalid Command"
+      raise 'Invalid Command'
     end
 
   end

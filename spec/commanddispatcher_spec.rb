@@ -1,9 +1,11 @@
 require_relative '../robot'
 require_relative '../compasspoints'
 require_relative '../commanddispatcher'
-require_relative 'mocks'
+require_relative '../simtable'
 require 'matrix'
 require 'observer'
+
+MOCK_TABLE_5BY5 = SimTable.new 5
 
 class MockCommandSource
   include Observable
@@ -28,13 +30,7 @@ class MockReportSink
     @last_position = position
   end
 
-  def last_position
-    @last_position
-  end
-
-  def last_orientation
-    @last_orientation
-  end
+  attr_reader :last_position, :last_orientation
 
 end
 
@@ -44,7 +40,7 @@ def test_command_performed(description, command, initial_postion, initial_orient
     r.place(initial_postion, initial_orientation, MOCK_TABLE_5BY5)
     dispatcher = CommandDispatcher.new(r)
     dispatcher.process_command(command)
-    expect(r.get_orientation).to eq final_orientation
+    expect(r.orientation).to eq final_orientation
   end
 end
 
@@ -58,8 +54,8 @@ def test_place_command()
       r = Robot.new
       dispatcher = CommandDispatcher.new(r)
       dispatcher.process_command(:place, [Vector[1,1], :south, MOCK_TABLE_5BY5])
-      expect(r.get_position).to eq Vector[1,1]
-      expect(r.get_orientation).to eq :south
+      expect(r.position).to eq Vector[1, 1]
+      expect(r.orientation).to eq :south
     end
   end
 end
@@ -73,8 +69,8 @@ def test_observer_behavior
       observable_source.add_observer(dispatcher)
       observable_source.call_notify_observers(:place, [Vector[0,3], :east, MOCK_TABLE_5BY5])
       observable_source.call_notify_observers(:move)
-      expect(r.get_position).to eq Vector[1,3]
-      expect(r.get_orientation).to eq :east
+      expect(r.position).to eq Vector[1, 3]
+      expect(r.orientation).to eq :east
     end
   end
 end

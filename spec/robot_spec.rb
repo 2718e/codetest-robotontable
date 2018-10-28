@@ -1,7 +1,10 @@
 require_relative '../robot'
 require_relative '../compasspoints'
-require_relative 'mocks'
+require_relative '../simtable'
 require 'matrix'
+
+MOCK_TABLE_5BY5 = SimTable.new 5
+MOCK_TABLE_3BY3 = SimTable.new 3
 
 def initialize_robot(position, orientation, table)
   robot = Robot.new
@@ -10,8 +13,8 @@ def initialize_robot(position, orientation, table)
 end
 
 def check_position_and_orientation(robot, expected_position, expected_orientation)
-  expect(robot.get_position).to eq expected_position
-  expect(robot.get_orientation).to eq expected_orientation
+  expect(robot.position).to eq expected_position
+  expect(robot.orientation).to eq expected_orientation
 end
 
 # convenience method to execute command series
