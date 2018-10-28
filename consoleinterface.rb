@@ -22,17 +22,29 @@ rescue ArgumentError
   nil
 end
 
+# parses commands from console and notifies observers whenever
+# a valid command is parsed
 class ConsoleCommandReader
   include Observable
 
+  # initialized with a simulated table
+  #
+  # @param table: the table to place the robot on when notifying observers of place commands
   def initialize(table)
     @table = table
   end
 
+
+  # parses a no argument command
+  #
+  # @param text: the command text
   def parse_normal_command(text)
     COMMAND_LOOKUP.key?(text) ? [COMMAND_LOOKUP[text], nil] : nil
   end
 
+  # parses the arguments portion of the place command
+  #
+  # @param args_text: the part of the place command containing x, y and orientation
   def parse_place_args(args_text)
     parts = args_text.split(',')
     result = nil
@@ -61,6 +73,8 @@ class ConsoleCommandReader
     end
   end
 
+  # reads commands from console in a loop
+  # and notifies observers when a valid command is received
   def run
     puts 'type commands, EXIT() to quit'
     input = ''
@@ -76,6 +90,8 @@ class ConsoleCommandReader
 
 end
 
+# when reports are received from obserables that this observes,
+# writes them to console
 class ConsoleReporter
 
   def update(position, orientation)

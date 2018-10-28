@@ -1,3 +1,5 @@
+This is a log of unstructured thoughts had whilst doing the challenge
+
 1715 24-10-2018 NZST
 
 command form was given as backticks with commands separated on lines

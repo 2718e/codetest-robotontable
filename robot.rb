@@ -47,6 +47,7 @@ class Robot
     end
   end
 
+  # returns true if the robot has been placed on a table
   def placed?
     !(@table.nil? || @position.nil? || @orientation.nil?)
   end
