@@ -1,6 +1,8 @@
 require_relative '../compasspoints'
 require 'matrix'
 
+include RobotOnTable
+
 EXPECTED_HASHES = %w[MOVE_VECTORS NAMES LEFT_TURNS RIGHT_TURNS]
 EXPECTED_DIRECTIONS = %i[north east south west]
 

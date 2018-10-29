@@ -1,5 +1,7 @@
 require "observer"
 
+module RobotOnTable
+
 # handles commands from a command source
 #
 # dispatches most commands to the robot.
@@ -56,5 +58,7 @@ class CommandDispatcher
     end
 
   end
+
+end
 
 end

@@ -3,6 +3,8 @@ require_relative '../compasspoints'
 require_relative '../simtable'
 require 'matrix'
 
+include RobotOnTable
+
 MOCK_TABLE_5BY5 = SimTable.new 5
 MOCK_TABLE_3BY3 = SimTable.new 3
 

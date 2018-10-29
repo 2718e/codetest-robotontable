@@ -3,6 +3,8 @@ require_relative 'robot'
 require_relative 'simtable'
 require_relative 'consoleinterface'
 
+include RobotOnTable
+
 robot = Robot.new
 table = SimTable.new 5
 dispatcher = CommandDispatcher.new robot

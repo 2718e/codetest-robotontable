@@ -1,6 +1,8 @@
 require_relative '../simtable'
 require 'matrix'
 
+include RobotOnTable
+
 describe SimTable do
   context "checking has_coordinate method" do
     size = 5

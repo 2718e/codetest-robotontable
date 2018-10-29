@@ -5,6 +5,8 @@ require_relative '../simtable'
 require 'matrix'
 require 'observer'
 
+include RobotOnTable
+
 MOCK_TABLE_5BY5 = SimTable.new 5
 
 class MockCommandSource

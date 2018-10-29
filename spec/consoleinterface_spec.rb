@@ -2,6 +2,8 @@ require_relative '../consoleinterface'
 require_relative '../simtable'
 require 'matrix'
 
+include RobotOnTable
+
 table = SimTable.new 5
 reader = ConsoleCommandReader.new table
 
